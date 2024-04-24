@@ -12,8 +12,15 @@ def get_metadata():
     return props_iface.Get("org.mpris.MediaPlayer2.Player", "Metadata")
     # OUT: [dbus.String(u'xesam:album'), dbus.String(u'xesam:title'), dbus.String(u'xesam:trackNumber'), dbus.String(u'xesam:artist'), dbus.String(u'xesam:discNumber'), dbus.String(u'mpris:trackid'), dbus.String(u'mpris:length'), dbus.String(u'mpris:artUrl'), dbus.String(u'xesam:autoRating'), dbus.String(u'xesam:contentCreated'), dbus.String(u'xesam:url')]
 
-if __name__ == "__main__":
+def get_current_song_info():
     info = get_metadata()
-    artist, title = info['xesam:artist'][0], info['xesam:title']
+    artist = str(info['xesam:artist'][0])
+    title = str(info['xesam:title'])
+    album = str(info['xesam:album'])
+    return dict(artist=artist, album=album, title=title)
+
+if __name__ == "__main__":
+    info = get_current_song_info()
+    artist, title = info['artist'], info['title']
     print(f"Song: '{title}' by '{artist}'.")
 
