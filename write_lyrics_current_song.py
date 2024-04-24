@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from pathlib import Path
 from rich import print
-from print_spotify_metadata import get_current_song_info
-from print_spotify_lyrics import get_current_song_info_and_lyrics
+from print_currently_playing_metadata import get_current_song_info
+from print_currently_playing_lyrics import get_current_song_info_and_lyrics
 
 if __name__ == "__main__":
     info = get_current_song_info()
