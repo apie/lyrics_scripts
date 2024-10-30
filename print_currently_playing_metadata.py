@@ -35,7 +35,10 @@ def get_metadata():
 
 def get_current_song_info():
     info = get_metadata()
-    artist = str(info['xesam:artist'][0])
+    artist_info = info['xesam:artist']
+    if isinstance(artist_info, list):
+        artist_info = artist_info[0]
+    artist = str(artist_info)
     title = str(info['xesam:title'])
     album = str(info['xesam:album'])
     return dict(artist=artist, album=album, title=title)
